@@ -1,0 +1,61 @@
+plugins {
+    alias libs.plugins.spring.boot apply false
+}
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'io.spring.dependency-management'
+
+    group = 'be.avido.hexagonal.demo'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '17'
+
+    repositories {
+        mavenCentral()
+    }
+
+    /**
+     * https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/#managing-dependencies.dependency-management-plugin.using-in-isolation
+     */
+    dependencyManagement {
+        imports {
+            mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+        }
+    }
+
+    dependencies {
+        // list dependencies for all sub projects
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+
+        //https://dev.to/art_ptushkin/how-to-properly-ignore-junit-4-in-gradle-and-maven-3o82
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+
+    }
+
+    // https://medium.com/@jonashavers/how-to-use-junit-5-with-gradle-fb7c5c3286cc
+    tasks {
+        test {
+            useJUnitPlatform()
+            testLogging {
+                events 'PASSED', 'FAILED', 'SKIPPED'
+                showStandardStreams = true
+            }
+            afterSuite { desc, result ->
+                if (!desc.parent) {
+                    println "\nTest result: ${result.resultType}"
+                    println "Test summary: ${result.testCount} tests, " +
+                            "${result.successfulTestCount} succeeded, " +
+                            "${result.failedTestCount} failed, " +
+                            "${result.skippedTestCount} skipped"
+                }
+            }
+        }
+    }
+
+}
