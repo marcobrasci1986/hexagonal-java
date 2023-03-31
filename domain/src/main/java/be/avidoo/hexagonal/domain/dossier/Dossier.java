@@ -7,11 +7,19 @@ import lombok.Getter;
 @Getter
 public class Dossier extends AggregateRoot<DossierId> {
 
+    private String description;
     private final DossierFase dossierFase;
 
     @Builder
-    public Dossier(DossierId id) {
+    public Dossier(DossierId id, DossierFase dossierFase, String description) {
         super(id);
-        this.dossierFase = DossierFase.CREATED;
+        this.description = description;
+        this.dossierFase = dossierFase;
+    }
+
+
+    public Dossier updateDescription(String description) {
+        this.description = description;
+        return this;
     }
 }

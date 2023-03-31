@@ -7,6 +7,10 @@ import lombok.Getter;
 @Getter
 public class DossierId extends EntityId<Long> {
 
+    public static DossierId of(Long id) {
+        return DossierId.builder().value(id).build();
+    }
+
     @Builder
     public DossierId(Long value) {
         super(value);
