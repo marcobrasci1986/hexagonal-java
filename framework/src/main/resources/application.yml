@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    name: hexagonal
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5555/hexagonal
+    username: hexagonal
+    password: hexagonal
+  jpa:
+    properties:
+      hibernate:
+        default_schema: hexagonal
+  flyway:
+    create-schemas: true
+    schemas: ${spring.datasource.name}

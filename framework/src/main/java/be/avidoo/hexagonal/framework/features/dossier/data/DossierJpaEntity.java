@@ -17,7 +17,6 @@ public class DossierJpaEntity {
     @Column(name = "id")
     private Long id;
 
-    @Id
     @Column(name = "description")
     private String description;
 
