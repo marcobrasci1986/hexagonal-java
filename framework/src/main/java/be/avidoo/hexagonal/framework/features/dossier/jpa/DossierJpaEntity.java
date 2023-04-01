@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.framework.features.dossier.data;
+package be.avidoo.hexagonal.framework.features.dossier.jpa;
 
 import be.avidoo.hexagonal.domain.dossier.DossierFase;
 import jakarta.persistence.*;

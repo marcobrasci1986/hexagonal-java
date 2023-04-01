@@ -3,11 +3,13 @@ package be.avidoo.hexagonal.framework.features.dossier.output;
 import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
-import be.avidoo.hexagonal.framework.features.dossier.data.DossierJpaEntity;
+import be.avidoo.hexagonal.framework.features.dossier.jpa.DossierJpaEntity;
 import be.avidoo.hexagonal.framework.features.dossier.mappers.DossierMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
+@Service
 public class DossierJpaAdaptor implements DossierOutputPort {
 
     private final DossierJpaRepository dossierJpaRepository;

@@ -5,9 +5,11 @@ import be.avidoo.hexagonal.application.dossier.usecases.DossierUseCase;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
 import be.avidoo.hexagonal.domain.dossier.command.UpdateDossierCommand;
+import jakarta.inject.Named;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@Named
 public class DossierInputPort implements DossierUseCase {
 
     private final DossierOutputPort dossierOutputPort;

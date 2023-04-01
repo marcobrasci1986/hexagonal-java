@@ -4,7 +4,7 @@ package be.avidoo.hexagonal.framework.features.dossier.input;
 import be.avidoo.hexagonal.application.dossier.usecases.DossierUseCase;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.framework.features.Api;
-import be.avidoo.hexagonal.framework.features.dossier.data.UpdateDossierDto;
+import be.avidoo.hexagonal.framework.features.dossier.dto.UpdateDossierDto;
 import be.avidoo.hexagonal.framework.features.dossier.mappers.UpdateDossierCommandMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

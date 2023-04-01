@@ -3,7 +3,7 @@ package be.avidoo.hexagonal.framework.features.dossier.mappers;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
 import be.avidoo.hexagonal.framework.EntityMapper;
-import be.avidoo.hexagonal.framework.features.dossier.data.DossierJpaEntity;
+import be.avidoo.hexagonal.framework.features.dossier.jpa.DossierJpaEntity;
 import org.springframework.stereotype.Service;
 
 @Service
