@@ -2,11 +2,12 @@ package be.avidoo.hexagonal.framework.features.dossier.mappers;
 
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
+import be.avidoo.hexagonal.framework.EntityMapper;
 import be.avidoo.hexagonal.framework.features.dossier.data.DossierJpaEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DossierMapper {
+public class DossierMapper implements EntityMapper<Dossier, DossierJpaEntity> {
 
     public DossierJpaEntity toJpaEntity(Dossier dossier) {
         return DossierJpaEntity.builder()
@@ -16,7 +17,7 @@ public class DossierMapper {
                 .build();
     }
 
-    public Dossier toDomainntity(DossierJpaEntity dossier) {
+    public Dossier toDomainEntity(DossierJpaEntity dossier) {
         return Dossier.builder()
                 .id(DossierId.of(dossier.getId()))
                 .dossierFase(dossier.getDossierFase())

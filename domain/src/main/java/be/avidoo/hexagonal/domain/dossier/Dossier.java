@@ -1,6 +1,7 @@
 package be.avidoo.hexagonal.domain.dossier;
 
 import be.avidoo.hexagonal.domain.AggregateRoot;
+import be.avidoo.hexagonal.domain.dossier.command.UpdateDossierCommand;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -26,8 +27,8 @@ public class Dossier extends AggregateRoot<DossierId> {
     }
 
 
-    public Dossier updateDescription(String description) {
-        this.description = description;
+    public Dossier update(UpdateDossierCommand updateDossierCommand) {
+        this.description = updateDossierCommand.getDescription();
         return this;
     }
 }

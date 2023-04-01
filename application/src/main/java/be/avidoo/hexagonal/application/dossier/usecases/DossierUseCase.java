@@ -2,6 +2,7 @@ package be.avidoo.hexagonal.application.dossier.usecases;
 
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
+import be.avidoo.hexagonal.domain.dossier.command.UpdateDossierCommand;
 
 public interface DossierUseCase {
 
@@ -10,7 +11,7 @@ public interface DossierUseCase {
     // Receive Query return Query
     Dossier createDossier();
 
-    Dossier updateDossier(DossierId dossierId, String description);
+    Dossier updateDossier(UpdateDossierCommand updateDossierCommand);
 
     void deleteDossier(DossierId dossierId);
 }

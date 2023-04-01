@@ -16,7 +16,7 @@ public class DossierJpaAdaptor implements DossierOutputPort {
     @Override
     public Dossier findById(DossierId dossierId) {
         DossierJpaEntity dossierJpaEntity = dossierJpaRepository.findById(dossierId.getValue()).orElseThrow();
-        return dossierMapper.toDomainntity(dossierJpaEntity);
+        return dossierMapper.toDomainEntity(dossierJpaEntity);
     }
 
     @Override
@@ -28,6 +28,6 @@ public class DossierJpaAdaptor implements DossierOutputPort {
     public Dossier save(Dossier dossier) {
         DossierJpaEntity dossierJpaEntity = dossierMapper.toJpaEntity(dossier);
         DossierJpaEntity savedDossier = dossierJpaRepository.save(dossierJpaEntity);
-        return dossierMapper.toDomainntity(savedDossier);
+        return dossierMapper.toDomainEntity(savedDossier);
     }
 }
