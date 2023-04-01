@@ -9,6 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * http://localhost:8083/hexagonal/swagger-ui/index.html
+ */
 @RestController
 @RequiredArgsConstructor
 public class DossierController implements Api {

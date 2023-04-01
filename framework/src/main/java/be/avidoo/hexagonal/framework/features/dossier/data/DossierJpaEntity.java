@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "dossier")
 @Getter
@@ -15,17 +17,18 @@ public class DossierJpaEntity {
 
     @Id
     @Column(name = "id")
-    private Long id;
+    private UUID id;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "fase")
+    @Column(name = "dossierfase")
     @Enumerated
     private DossierFase dossierFase;
 
     @Builder
-    public DossierJpaEntity(String description, DossierFase dossierFase) {
+    public DossierJpaEntity(UUID id, String description, DossierFase dossierFase) {
+        this.id = id;
         this.description = description;
         this.dossierFase = dossierFase;
     }

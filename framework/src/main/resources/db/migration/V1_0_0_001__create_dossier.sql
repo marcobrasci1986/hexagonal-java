@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS Dossier
 (
-    id          SERIAL PRIMARY KEY,
+    id          uuid PRIMARY KEY,
     description varchar,
-    dossierFase varchar NOT NULL
+    dossierfase varchar NOT NULL
 );
 

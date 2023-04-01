@@ -12,3 +12,7 @@ spring:
   flyway:
     create-schemas: true
     schemas: ${spring.datasource.name}
+server:
+  port: 8083
+  servlet:
+    context-path: /hexagonal

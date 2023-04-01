@@ -10,10 +10,11 @@ dependencyResolutionManagement {
     versionCatalogs {
         libs {
             version('spring.boot', '3.0.3')
-//            version('jakarta.inject', '2.0.1')
+            version('springdoc.openapi.starter', '2.0.2') // swagger-ui
 
 
-//            library('jakarta.inject', 'jakarta.inject', 'jakarta.inject-api').versionRef('jakarta.inject')
+
+            library('springdoc.openapi.starter', 'org.springdoc', 'springdoc-openapi-starter-webmvc-ui').versionRef('springdoc.openapi.starter')
             plugin('spring.boot', 'org.springframework.boot').versionRef('spring.boot')
 
         }

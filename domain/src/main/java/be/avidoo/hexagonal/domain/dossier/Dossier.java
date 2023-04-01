@@ -10,6 +10,14 @@ public class Dossier extends AggregateRoot<DossierId> {
     private String description;
     private final DossierFase dossierFase;
 
+
+    public static Dossier create() {
+        return Dossier.builder()
+                .id(DossierId.create())
+                .dossierFase(DossierFase.CREATED)
+                .build();
+    }
+
     @Builder
     public Dossier(DossierId id, DossierFase dossierFase, String description) {
         super(id);

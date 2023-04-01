@@ -13,8 +13,7 @@ public class DossierInputPort implements DossierUseCase {
 
     @Override
     public Dossier createDossier() {
-        Dossier dossier = Dossier.builder().build();
-        return dossierOutputPort.save(dossier);
+        return dossierOutputPort.save(Dossier.create());
     }
 
     @Override

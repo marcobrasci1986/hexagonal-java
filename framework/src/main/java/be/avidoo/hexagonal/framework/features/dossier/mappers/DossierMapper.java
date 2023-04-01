@@ -10,6 +10,7 @@ public class DossierMapper {
 
     public DossierJpaEntity toJpaEntity(Dossier dossier) {
         return DossierJpaEntity.builder()
+                .id(dossier.getId().getValue())
                 .dossierFase(dossier.getDossierFase())
                 .description(dossier.getDescription())
                 .build();
