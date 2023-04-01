@@ -25,7 +25,8 @@ public class DossierInputPort implements DossierUseCase {
                 DossierId.of(updateDossierCommand.getId())
         );
 
-        return dossierToUpdate.update(updateDossierCommand);
+        Dossier updatedDossier = dossierToUpdate.update(updateDossierCommand);
+        return dossierOutputPort.save(updatedDossier);
     }
 
     @Override

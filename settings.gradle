@@ -4,6 +4,7 @@ rootProject.name = 'hexagonal-java'
 include 'domain'
 include 'framework'
 include 'application'
+include 'bootstrap'
 
 
 dependencyResolutionManagement {
