@@ -1,11 +1,11 @@
 package be.avidoo.hexagonal.application.dossier.ports.input;
 
-import be.avidoo.hexagonal.application.dossier.events.DossierCreatedEvent;
 import be.avidoo.hexagonal.application.dossier.ports.output.AuditOutputPort;
 import be.avidoo.hexagonal.application.dossier.usecases.AuditUseCase;
 import be.avidoo.hexagonal.domain.audit.Audit;
 import be.avidoo.hexagonal.domain.audit.AuditId;
 import be.avidoo.hexagonal.domain.audit.command.SaveAuditCommand;
+import be.avidoo.hexagonal.domain.dossier.events.DossierCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
@@ -41,6 +41,11 @@ public class AuditInputPort implements AuditUseCase {
                 .event(saveAuditCommand.getEvent())
                 .timestamp(saveAuditCommand.getTimestamp())
                 .build();
+
+
+        if (saveAuditCommand.getEvent().equals("DossierCreatedEvent")) {
+            throw new RuntimeException("Test if TX works. Dossier should not be saved.");
+        }
 
         return auditOutputPort.save(audit);
     }

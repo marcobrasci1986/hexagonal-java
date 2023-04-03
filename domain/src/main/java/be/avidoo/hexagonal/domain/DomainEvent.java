@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.application.dossier.events;
+package be.avidoo.hexagonal.domain;
 
 import java.time.LocalDateTime;
 

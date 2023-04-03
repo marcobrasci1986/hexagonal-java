@@ -1,11 +1,11 @@
 package be.avidoo.hexagonal.application.dossier.ports.input;
 
-import be.avidoo.hexagonal.application.dossier.events.DossierCreatedEvent;
 import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
 import be.avidoo.hexagonal.application.dossier.usecases.DossierUseCase;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
 import be.avidoo.hexagonal.domain.dossier.command.UpdateDossierCommand;
+import be.avidoo.hexagonal.domain.dossier.events.DossierDeletedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
@@ -26,15 +26,10 @@ public class DossierInputPort implements DossierUseCase {
 
     @Override
     public Dossier createDossier() {
-        Dossier savedDossier = dossierOutputPort.save(Dossier.create());
+        Dossier newDossier = Dossier.create();
+        dossierOutputPort.save(newDossier);
 
-        applicationEventPublisher.publishEvent(
-                DossierCreatedEvent.builder()
-                        .dossierId(savedDossier.getId())
-                        .timestamp(LocalDateTime.now(clock))
-                        .build()
-        );
-        return savedDossier;
+        return handleEvents(newDossier);
     }
 
     @Override
@@ -44,20 +39,28 @@ public class DossierInputPort implements DossierUseCase {
         );
 
         Dossier updatedDossier = dossierToUpdate.update(updateDossierCommand);
-        Dossier save = dossierOutputPort.save(updatedDossier);
+        dossierOutputPort.save(updatedDossier);
 
-        applicationEventPublisher.publishEvent(
-                DossierCreatedEvent.builder()
-                        .dossierId(save.getId())
-                        .timestamp(LocalDateTime.now(clock))
-                        .build()
-        );
+        return handleEvents(updatedDossier);
 
-        return save;
     }
 
     @Override
     public void deleteDossier(DossierId dossierId) {
         dossierOutputPort.deleteById(dossierId);
+
+        applicationEventPublisher.publishEvent(
+                DossierDeletedEvent.builder()
+                        .dossierId(dossierId)
+                        .timestamp(LocalDateTime.now(clock))
+                        .build()
+        );
+    }
+
+    private Dossier handleEvents(Dossier updatedDossier) {
+        updatedDossier.getEvents().forEach(applicationEventPublisher::publishEvent);
+        updatedDossier.clearEvents();
+
+        return updatedDossier;
     }
 }

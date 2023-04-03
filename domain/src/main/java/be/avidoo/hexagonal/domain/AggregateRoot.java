@@ -1,19 +1,31 @@
 package be.avidoo.hexagonal.domain;
 
+import lombok.Getter;
+import lombok.NonNull;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-import static java.util.Objects.requireNonNull;
-
+@Getter
 public class AggregateRoot<T extends EntityId<?>> {
 
     private final T id;
 
-    public AggregateRoot(T id) {
-        this.id = requireNonNull(id);
+    private List<DomainEvent> events;
+
+
+    public AggregateRoot(@NonNull T id) {
+        this.id = id;
+        this.events = new ArrayList<>();
     }
 
-    public T getId() {
-        return id;
+    public void clearEvents() {
+        events.clear();
+    }
+
+    protected void addEvent(DomainEvent domainEvent) {
+        events.add(domainEvent);
     }
 
     @Override
