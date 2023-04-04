@@ -43,9 +43,9 @@ public class AuditInputPort implements AuditUseCase {
                 .build();
 
 
-        if (saveAuditCommand.getEvent().equals("DossierCreatedEvent")) {
-            throw new RuntimeException("Test if TX works. Dossier should not be saved.");
-        }
+//        if (saveAuditCommand.getEvent().equals("DossierCreatedEvent")) {
+//            throw new RuntimeException("Test if TX works. Dossier should not be saved.");
+//        }
 
         return auditOutputPort.save(audit);
     }

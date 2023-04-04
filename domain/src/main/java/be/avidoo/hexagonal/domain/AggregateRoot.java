@@ -4,15 +4,19 @@ import lombok.Getter;
 import lombok.NonNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @param <T>: Implementation of EntityId
+ */
 @Getter
 public class AggregateRoot<T extends EntityId<?>> {
 
     private final T id;
 
-    private List<DomainEvent> events;
+    private final List<DomainEvent> events;
 
 
     public AggregateRoot(@NonNull T id) {
@@ -24,7 +28,11 @@ public class AggregateRoot<T extends EntityId<?>> {
         events.clear();
     }
 
-    protected void addEvent(DomainEvent domainEvent) {
+    public List<DomainEvent> getEvents() {
+        return Collections.unmodifiableList(events); // prevent mutating
+    }
+
+    protected void registerEvent(DomainEvent domainEvent) {
         events.add(domainEvent);
     }
 

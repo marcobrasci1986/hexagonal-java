@@ -15,8 +15,8 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
-@Transactional
-@Service
+@Transactional // Spring
+@Service // Spring
 public class DossierInputPort implements DossierUseCase {
 
     private final DossierOutputPort dossierOutputPort;
@@ -26,7 +26,7 @@ public class DossierInputPort implements DossierUseCase {
 
     @Override
     public Dossier createDossier() {
-        Dossier newDossier = Dossier.create();
+        Dossier newDossier = Dossier.create(LocalDateTime.now(clock));
         dossierOutputPort.save(newDossier);
 
         return handleEvents(newDossier);
