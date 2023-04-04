@@ -1,9 +1,9 @@
-package be.avidoo.hexagonal.framework.features.audit.maper;
+package be.avidoo.hexagonal.framework.features.audit.adaptor.maper;
 
 import be.avidoo.hexagonal.domain.audit.Audit;
 import be.avidoo.hexagonal.domain.audit.AuditId;
 import be.avidoo.hexagonal.framework.EntityMapper;
-import be.avidoo.hexagonal.framework.features.audit.jpa.AuditJpaEntity;
+import be.avidoo.hexagonal.framework.features.audit.adaptor.output.jpa.AuditJpaEntity;
 import org.springframework.stereotype.Service;
 
 @Service

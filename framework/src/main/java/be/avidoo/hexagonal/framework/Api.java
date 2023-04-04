@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.framework.features;
+package be.avidoo.hexagonal.framework;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 

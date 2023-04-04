@@ -1,10 +1,9 @@
-package be.avidoo.hexagonal.framework.features.dossier.output;
+package be.avidoo.hexagonal.framework.features.dossier.adaptor.output.jpa;
 
 import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
-import be.avidoo.hexagonal.framework.features.dossier.jpa.DossierJpaEntity;
-import be.avidoo.hexagonal.framework.features.dossier.mappers.DossierMapper;
+import be.avidoo.hexagonal.framework.features.dossier.adaptor.mappers.DossierMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

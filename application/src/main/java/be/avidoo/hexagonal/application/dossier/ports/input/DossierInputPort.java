@@ -1,7 +1,7 @@
 package be.avidoo.hexagonal.application.dossier.ports.input;
 
 import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
-import be.avidoo.hexagonal.application.dossier.usecases.DossierUseCase;
+import be.avidoo.hexagonal.application.dossier.DossierUseCase;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
 import be.avidoo.hexagonal.domain.dossier.command.UpdateDossierCommand;
@@ -21,7 +21,6 @@ public class DossierInputPort implements DossierUseCase {
 
     private final DossierOutputPort dossierOutputPort;
     private final ApplicationEventPublisher applicationEventPublisher;
-
     private final Clock clock;
 
     @Override
@@ -42,7 +41,6 @@ public class DossierInputPort implements DossierUseCase {
         dossierOutputPort.save(updatedDossier);
 
         return handleEvents(updatedDossier);
-
     }
 
     @Override
@@ -57,10 +55,10 @@ public class DossierInputPort implements DossierUseCase {
         );
     }
 
-    private Dossier handleEvents(Dossier updatedDossier) {
-        updatedDossier.getEvents().forEach(applicationEventPublisher::publishEvent);
-        updatedDossier.clearEvents();
+    private Dossier handleEvents(Dossier dossier) {
+        dossier.getEvents().forEach(applicationEventPublisher::publishEvent);
+        dossier.clearEvents();
 
-        return updatedDossier;
+        return dossier;
     }
 }

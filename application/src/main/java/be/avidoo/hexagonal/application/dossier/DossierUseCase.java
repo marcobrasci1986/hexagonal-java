@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.application.dossier.usecases;
+package be.avidoo.hexagonal.application.dossier;
 
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;

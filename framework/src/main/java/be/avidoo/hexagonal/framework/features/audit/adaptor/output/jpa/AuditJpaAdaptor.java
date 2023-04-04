@@ -1,9 +1,8 @@
-package be.avidoo.hexagonal.framework.features.audit.jpa.output;
+package be.avidoo.hexagonal.framework.features.audit.adaptor.output.jpa;
 
-import be.avidoo.hexagonal.application.dossier.ports.output.AuditOutputPort;
+import be.avidoo.hexagonal.application.audit.ports.output.AuditOutputPort;
 import be.avidoo.hexagonal.domain.audit.Audit;
-import be.avidoo.hexagonal.framework.features.audit.jpa.AuditJpaEntity;
-import be.avidoo.hexagonal.framework.features.audit.maper.AuditMapper;
+import be.avidoo.hexagonal.framework.features.audit.adaptor.maper.AuditMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

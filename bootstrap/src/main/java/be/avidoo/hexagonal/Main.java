@@ -1,6 +1,6 @@
 package be.avidoo.hexagonal;
 
-import be.avidoo.hexagonal.application.dossier.ApplicationConfiguration;
+import be.avidoo.hexagonal.application.ApplicationConfiguration;
 import be.avidoo.hexagonal.framework.FrameworkConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

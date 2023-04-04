@@ -1,6 +1,5 @@
-package be.avidoo.hexagonal.framework.features.dossier.output;
+package be.avidoo.hexagonal.framework.features.dossier.adaptor.output.jpa;
 
-import be.avidoo.hexagonal.framework.features.dossier.jpa.DossierJpaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

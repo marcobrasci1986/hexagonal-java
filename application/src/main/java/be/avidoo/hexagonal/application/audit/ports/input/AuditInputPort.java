@@ -1,7 +1,7 @@
-package be.avidoo.hexagonal.application.dossier.ports.input;
+package be.avidoo.hexagonal.application.audit.ports.input;
 
-import be.avidoo.hexagonal.application.dossier.ports.output.AuditOutputPort;
-import be.avidoo.hexagonal.application.dossier.usecases.AuditUseCase;
+import be.avidoo.hexagonal.application.audit.ports.output.AuditOutputPort;
+import be.avidoo.hexagonal.application.audit.AuditUseCase;
 import be.avidoo.hexagonal.domain.audit.Audit;
 import be.avidoo.hexagonal.domain.audit.AuditId;
 import be.avidoo.hexagonal.domain.audit.command.SaveAuditCommand;
@@ -43,9 +43,9 @@ public class AuditInputPort implements AuditUseCase {
                 .build();
 
 
-//        if (saveAuditCommand.getEvent().equals("DossierCreatedEvent")) {
-//            throw new RuntimeException("Test if TX works. Dossier should not be saved.");
-//        }
+        if (saveAuditCommand.getEvent().equals("DossierCreatedEvent")) {
+            throw new RuntimeException("Test if TX works. Dossier should not be saved.");
+        }
 
         return auditOutputPort.save(audit);
     }

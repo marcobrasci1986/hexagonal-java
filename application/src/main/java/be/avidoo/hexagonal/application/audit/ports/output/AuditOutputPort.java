@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.application.dossier.ports.output;
+package be.avidoo.hexagonal.application.audit.ports.output;
 
 import be.avidoo.hexagonal.domain.audit.Audit;
 

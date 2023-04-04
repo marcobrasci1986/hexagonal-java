@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.framework.features.audit.jpa;
+package be.avidoo.hexagonal.framework.features.audit.adaptor.output.jpa;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
