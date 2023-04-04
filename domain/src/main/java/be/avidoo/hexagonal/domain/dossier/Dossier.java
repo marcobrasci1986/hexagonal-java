@@ -43,6 +43,7 @@ public class Dossier extends AggregateRoot<DossierId> {
         super(id);
         this.description = description;
         this.dossierFase = dossierFase;
+        // register Domain Event
     }
 
     public Dossier update(UpdateDossierCommand updateDossierCommand) {
