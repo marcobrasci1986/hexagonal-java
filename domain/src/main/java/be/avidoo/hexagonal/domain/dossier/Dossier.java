@@ -1,7 +1,6 @@
 package be.avidoo.hexagonal.domain.dossier;
 
 import be.avidoo.hexagonal.domain.AggregateRoot;
-import be.avidoo.hexagonal.domain.dossier.command.UpdateDossierCommand;
 import be.avidoo.hexagonal.domain.dossier.events.DossierCreatedEvent;
 import be.avidoo.hexagonal.domain.dossier.events.DossierUpdatedEvent;
 import lombok.Builder;
@@ -45,8 +44,8 @@ public class Dossier extends AggregateRoot<DossierId> {
         this.dossierFase = dossierFase;
     }
 
-    public Dossier update(UpdateDossierCommand updateDossierCommand) {
-        this.description = updateDossierCommand.getDescription();
+    public Dossier update(String description) {
+        this.description = description;
         this.registerEvent(
                 DossierUpdatedEvent.builder()
                         .dossierId(this.getId())

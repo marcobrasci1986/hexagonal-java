@@ -4,7 +4,7 @@ import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
 import be.avidoo.hexagonal.application.dossier.DossierUseCase;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
-import be.avidoo.hexagonal.domain.dossier.command.UpdateDossierCommand;
+import be.avidoo.hexagonal.application.dossier.ports.input.command.UpdateDossierCommand;
 import be.avidoo.hexagonal.domain.dossier.events.DossierDeletedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
@@ -15,8 +15,8 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
-@Transactional // Spring
-@Service // Spring
+@Transactional
+@Service
 public class DossierInputPort implements DossierUseCase {
 
     private final DossierOutputPort dossierOutputPort;
@@ -37,7 +37,7 @@ public class DossierInputPort implements DossierUseCase {
                 DossierId.of(updateDossierCommand.getId())
         );
 
-        Dossier updatedDossier = dossierToUpdate.update(updateDossierCommand);
+        Dossier updatedDossier = dossierToUpdate.update(updateDossierCommand.getDescription());
         dossierOutputPort.save(updatedDossier);
 
         return handleEvents(updatedDossier);
