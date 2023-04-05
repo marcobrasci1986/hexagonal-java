@@ -12,7 +12,6 @@ class UpdateDossierCommandTest {
 
     @Test
     void validateDescriptionNull() {
-
         ConstraintViolationException ex = assertThrows(ConstraintViolationException.class, () -> {
             UpdateDossierCommand.builder()
                     .id(UUID.randomUUID())
