@@ -1,7 +1,7 @@
 package be.avidoo.hexagonal.framework.features.dossier.adaptor.output.persistence;
 
 import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
-import be.avidoo.hexagonal.application.dossier.ports.output.DossierUpdateOutputPort;
+import be.avidoo.hexagonal.application.dossier.ports.output.DossierJdbcOutputPort;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
 import be.avidoo.hexagonal.framework.features.dossier.adaptor.mappers.DossierMapper;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class DossierPersistenceAdaptor implements DossierOutputPort, DossierUpdateOutputPort {
+public class DossierPersistenceAdaptor implements DossierOutputPort, DossierJdbcOutputPort {
 
     private final DossierJpaRepository dossierJpaRepository;
     private final DossierJdbcRepository dossierJdbcRepository;

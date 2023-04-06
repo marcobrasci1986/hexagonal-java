@@ -1,14 +1,14 @@
 package be.avidoo.hexagonal.application.dossier.ports.input;
 
+import be.avidoo.hexagonal.application.ApplicationService;
 import be.avidoo.hexagonal.application.dossier.DossierUseCase;
 import be.avidoo.hexagonal.application.dossier.ports.input.command.UpdateDescriptionCommand;
 import be.avidoo.hexagonal.application.dossier.ports.input.command.UpdateDossierCommand;
 import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
-import be.avidoo.hexagonal.application.dossier.ports.output.DossierUpdateOutputPort;
+import be.avidoo.hexagonal.application.dossier.ports.output.DossierJdbcOutputPort;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
 import be.avidoo.hexagonal.domain.dossier.events.DossierDeletedEvent;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,15 +16,26 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Clock;
 import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
+
 @Transactional
 @Service
-public class DossierInputPort implements DossierUseCase {
+public class DossierService extends ApplicationService<Dossier> implements DossierUseCase {
 
     private final DossierOutputPort dossierOutputPort;
-    private final DossierUpdateOutputPort dossierUpdateOutputPort;
-    private final ApplicationEventPublisher applicationEventPublisher;
+    private final DossierJdbcOutputPort dossierJdbcOutputPort;
     private final Clock clock;
+
+    public DossierService(
+            ApplicationEventPublisher applicationEventPublisher,
+            DossierOutputPort dossierOutputPort,
+            DossierJdbcOutputPort dossierJdbcOutputPort,
+            Clock clock
+    ) {
+        super(applicationEventPublisher);
+        this.dossierOutputPort = dossierOutputPort;
+        this.dossierJdbcOutputPort = dossierJdbcOutputPort;
+        this.clock = clock;
+    }
 
     @Override
     public Dossier createDossier() {
@@ -58,16 +69,9 @@ public class DossierInputPort implements DossierUseCase {
         );
     }
 
-    private Dossier handleEvents(Dossier dossier) {
-        dossier.getEvents().forEach(applicationEventPublisher::publishEvent);
-        dossier.clearEvents();
-
-        return dossier;
-    }
-
     @Override
     public int updateDescription(UpdateDescriptionCommand updateDossierCommand) {
-        return dossierUpdateOutputPort.updateDescription(
+        return dossierJdbcOutputPort.updateDescription(
                 updateDossierCommand.getNewDescription(),
                 updateDossierCommand.getOldDescription()
         );

@@ -16,7 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Transactional
 @Service
-public class AuditInputPort implements AuditUseCase {
+public class AuditService implements AuditUseCase {
 
     private final AuditOutputPort auditOutputPort;
 
