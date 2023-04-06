@@ -2,6 +2,7 @@ package be.avidoo.hexagonal.framework.features.dossier.adaptor.input.web;
 
 
 import be.avidoo.hexagonal.application.dossier.DossierUseCase;
+import be.avidoo.hexagonal.application.dossier.ports.input.command.UpdateDescriptionCommand;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.framework.Api;
 import be.avidoo.hexagonal.framework.features.dossier.adaptor.mappers.UpdateDossierCommandMapper;
@@ -35,6 +36,21 @@ public class DossierController implements Api {
 
         Dossier dossier = dossierUseCase.updateDossier(
                 updateDossierCommandMapper.map(updateDossierDto)
+        );
+
+        return ResponseEntity.ok(dossier);
+
+    }
+
+
+    @PostMapping("/dossier-description")
+    public ResponseEntity<Integer> updateDescriptionDossier(UpdateDescriptionDossierDto updateDossierDto) {
+
+        int dossier = dossierUseCase.updateDescription(
+                UpdateDescriptionCommand.builder()
+                        .newDescription(updateDossierDto.newDescription())
+                        .oldDescription(updateDossierDto.oldDescription())
+                        .build()
         );
 
         return ResponseEntity.ok(dossier);

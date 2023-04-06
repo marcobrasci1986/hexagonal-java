@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.framework.features.dossier.adaptor.output.jpa;
+package be.avidoo.hexagonal.framework.features.dossier.adaptor.output.persistence.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

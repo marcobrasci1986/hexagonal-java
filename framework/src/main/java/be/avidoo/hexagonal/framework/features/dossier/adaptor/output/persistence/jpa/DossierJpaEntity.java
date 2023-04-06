@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.framework.features.dossier.adaptor.output.jpa;
+package be.avidoo.hexagonal.framework.features.dossier.adaptor.output.persistence.jpa;
 
 import be.avidoo.hexagonal.domain.dossier.DossierFase;
 import jakarta.persistence.*;

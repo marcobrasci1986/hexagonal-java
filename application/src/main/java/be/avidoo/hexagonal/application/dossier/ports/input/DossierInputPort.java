@@ -1,10 +1,12 @@
 package be.avidoo.hexagonal.application.dossier.ports.input;
 
-import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
 import be.avidoo.hexagonal.application.dossier.DossierUseCase;
+import be.avidoo.hexagonal.application.dossier.ports.input.command.UpdateDescriptionCommand;
+import be.avidoo.hexagonal.application.dossier.ports.input.command.UpdateDossierCommand;
+import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
+import be.avidoo.hexagonal.application.dossier.ports.output.DossierUpdateOutputPort;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
-import be.avidoo.hexagonal.application.dossier.ports.input.command.UpdateDossierCommand;
 import be.avidoo.hexagonal.domain.dossier.events.DossierDeletedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
@@ -20,6 +22,7 @@ import java.time.LocalDateTime;
 public class DossierInputPort implements DossierUseCase {
 
     private final DossierOutputPort dossierOutputPort;
+    private final DossierUpdateOutputPort dossierUpdateOutputPort;
     private final ApplicationEventPublisher applicationEventPublisher;
     private final Clock clock;
 
@@ -61,4 +64,14 @@ public class DossierInputPort implements DossierUseCase {
 
         return dossier;
     }
+
+    @Override
+    public int updateDescription(UpdateDescriptionCommand updateDossierCommand) {
+        return dossierUpdateOutputPort.updateDescription(
+                updateDossierCommand.getNewDescription(),
+                updateDossierCommand.getOldDescription()
+        );
+    }
+
+
 }
