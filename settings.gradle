@@ -2,7 +2,8 @@ rootProject.name = 'hexagonal-java'
 
 
 include 'domain'
-include 'framework'
+include 'output-adaptor'
+include 'input-adaptor'
 include 'application'
 include 'bootstrap'
 

@@ -4,8 +4,8 @@ import be.avidoo.hexagonal.application.ApplicationService;
 import be.avidoo.hexagonal.application.dossier.DossierUseCase;
 import be.avidoo.hexagonal.application.dossier.ports.input.command.UpdateDescriptionCommand;
 import be.avidoo.hexagonal.application.dossier.ports.input.command.UpdateDossierCommand;
-import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
 import be.avidoo.hexagonal.application.dossier.ports.output.DossierJdbcOutputPort;
+import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
 import be.avidoo.hexagonal.domain.dossier.events.DossierDeletedEvent;
@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 
 
 @Transactional
-@Service
+@Service // can be replaced by @Beans in Framework module
 public class DossierService extends ApplicationService<Dossier> implements DossierUseCase {
 
     private final DossierOutputPort dossierOutputPort;
