@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.input.dossier.web;
+package be.avidoo.hexagonal.input.web.dossier.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;

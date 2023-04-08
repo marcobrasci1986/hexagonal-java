@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.output.audit.jpa;
+package be.avidoo.hexagonal.output.persistence.audit.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

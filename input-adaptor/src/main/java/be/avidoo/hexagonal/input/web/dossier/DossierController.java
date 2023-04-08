@@ -1,11 +1,13 @@
-package be.avidoo.hexagonal.input.dossier.web;
+package be.avidoo.hexagonal.input.web.dossier;
 
 
 import be.avidoo.hexagonal.application.dossier.DossierUseCase;
 import be.avidoo.hexagonal.application.dossier.ports.input.command.UpdateDescriptionCommand;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
-import be.avidoo.hexagonal.input.Api;
-import be.avidoo.hexagonal.input.dossier.mapper.UpdateDossierCommandMapper;
+import be.avidoo.hexagonal.input.web.RestApiRoot;
+import be.avidoo.hexagonal.input.web.dossier.dto.UpdateDescriptionDossierDto;
+import be.avidoo.hexagonal.input.web.dossier.dto.UpdateDossierDto;
+import be.avidoo.hexagonal.input.web.dossier.mapper.UpdateDossierCommandMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequiredArgsConstructor
-public class DossierController implements Api {
+public class DossierController implements RestApiRoot {
 
     private final DossierUseCase dossierUseCase;
     private final UpdateDossierCommandMapper updateDossierCommandMapper;

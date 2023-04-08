@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.output;
+package be.avidoo.hexagonal.output.persistence;
 
 import be.avidoo.hexagonal.domain.AggregateRoot;
 import be.avidoo.hexagonal.domain.EntityId;

@@ -1,14 +1,16 @@
-package be.avidoo.hexagonal.output.audit.jpa;
+package be.avidoo.hexagonal.output.persistence.audit;
 
 import be.avidoo.hexagonal.application.audit.ports.output.AuditOutputPort;
 import be.avidoo.hexagonal.domain.audit.Audit;
-import be.avidoo.hexagonal.output.audit.mapper.AuditMapper;
+import be.avidoo.hexagonal.output.persistence.audit.jpa.AuditJpaEntity;
+import be.avidoo.hexagonal.output.persistence.audit.jpa.AuditJpaRepository;
+import be.avidoo.hexagonal.output.persistence.audit.jpa.mapper.AuditMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class AuditJpaAdaptor implements AuditOutputPort {
+public class AuditPersistenceAdaptor implements AuditOutputPort {
 
     private final AuditJpaRepository auditJpaRepository;
     private final AuditMapper auditMapper;

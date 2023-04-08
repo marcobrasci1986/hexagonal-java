@@ -1,9 +1,9 @@
-package be.avidoo.hexagonal.output.dossier.mappers;
+package be.avidoo.hexagonal.output.persistence.dossier.jpa.mappers;
 
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
-import be.avidoo.hexagonal.output.EntityMapper;
-import be.avidoo.hexagonal.output.dossier.jpa.DossierJpaEntity;
+import be.avidoo.hexagonal.output.persistence.EntityMapper;
+import be.avidoo.hexagonal.output.persistence.dossier.jpa.DossierJpaEntity;
 import org.springframework.stereotype.Service;
 
 @Service

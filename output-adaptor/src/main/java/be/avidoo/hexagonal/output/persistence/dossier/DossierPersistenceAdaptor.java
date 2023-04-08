@@ -1,13 +1,13 @@
-package be.avidoo.hexagonal.output.dossier;
+package be.avidoo.hexagonal.output.persistence.dossier;
 
 import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
 import be.avidoo.hexagonal.application.dossier.ports.output.DossierJdbcOutputPort;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
-import be.avidoo.hexagonal.output.dossier.mappers.DossierMapper;
-import be.avidoo.hexagonal.output.dossier.jdbc.DossierJdbcRepository;
-import be.avidoo.hexagonal.output.dossier.jpa.DossierJpaEntity;
-import be.avidoo.hexagonal.output.dossier.jpa.DossierJpaRepository;
+import be.avidoo.hexagonal.output.persistence.dossier.jpa.mappers.DossierMapper;
+import be.avidoo.hexagonal.output.persistence.dossier.jdbc.DossierJdbcRepository;
+import be.avidoo.hexagonal.output.persistence.dossier.jpa.DossierJpaEntity;
+import be.avidoo.hexagonal.output.persistence.dossier.jpa.DossierJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

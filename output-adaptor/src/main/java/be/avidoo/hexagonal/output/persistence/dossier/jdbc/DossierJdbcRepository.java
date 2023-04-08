@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.output.dossier.jdbc;
+package be.avidoo.hexagonal.output.persistence.dossier.jdbc;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
