@@ -13,6 +13,7 @@ class DossierTest {
         UUID id = UUID.randomUUID();
         Dossier initialDossier = Dossier.builder()
                 .id(DossierId.builder().value(id).build())
+                .dossierFase(DossierFase.CREATED)
                 .build();
 
         assertThat(initialDossier.getId().getValue()).isEqualTo(id);

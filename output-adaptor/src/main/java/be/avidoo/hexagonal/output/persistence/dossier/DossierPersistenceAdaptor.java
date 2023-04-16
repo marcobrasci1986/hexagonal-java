@@ -1,15 +1,17 @@
 package be.avidoo.hexagonal.output.persistence.dossier;
 
-import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
 import be.avidoo.hexagonal.application.dossier.ports.output.DossierJdbcOutputPort;
+import be.avidoo.hexagonal.application.dossier.ports.output.DossierOutputPort;
 import be.avidoo.hexagonal.domain.dossier.Dossier;
 import be.avidoo.hexagonal.domain.dossier.DossierId;
-import be.avidoo.hexagonal.output.persistence.dossier.jpa.mappers.DossierMapper;
 import be.avidoo.hexagonal.output.persistence.dossier.jdbc.DossierJdbcRepository;
 import be.avidoo.hexagonal.output.persistence.dossier.jpa.DossierJpaEntity;
 import be.avidoo.hexagonal.output.persistence.dossier.jpa.DossierJpaRepository;
+import be.avidoo.hexagonal.output.persistence.dossier.jpa.mappers.DossierMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -40,5 +42,12 @@ public class DossierPersistenceAdaptor implements DossierOutputPort, DossierJdbc
     @Override
     public int updateDescription(String newDescription, String oldDescription) {
         return dossierJdbcRepository.updateDescription(newDescription, oldDescription);
+    }
+
+    @Override
+    public List<Dossier> findAll() {
+        return this.dossierJpaRepository.findAll()
+                .stream()
+                .map(dossierMapper::toDomainEntity).toList();
     }
 }

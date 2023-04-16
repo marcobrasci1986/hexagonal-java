@@ -1,4 +1,4 @@
-package be.avidoo.hexagonal.features;
+package be.avidoo.hexagonal.dossier;
 
 import be.avidoo.hexagonal.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
@@ -7,9 +7,9 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class DossierIntegrationTest extends AbstractIntegrationTest {
-
 
     @Test
     void maakDossierAan() throws Exception {
@@ -17,9 +17,9 @@ public class DossierIntegrationTest extends AbstractIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON))
                 .andReturn()
-                .getResponse()
-                .getContentAsString();
+                .getResponse();
 
-        System.out.println(response);
+        assertThat(response.getStatus()).isEqualTo(200);
+
     }
 }
