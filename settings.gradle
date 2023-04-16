@@ -13,12 +13,18 @@ dependencyResolutionManagement {
         libs {
             version('spring.boot', '3.0.3')
             version('springdoc.openapi.starter', '2.0.2')
+            version('test-containers', '1.17.6')
 
 
             library('springdoc.openapi.starter', 'org.springdoc', 'springdoc-openapi-starter-webmvc-ui').versionRef('springdoc.openapi.starter')
 
 
             plugin('spring.boot', 'org.springframework.boot').versionRef('spring.boot')
+
+
+            library('testcontainers.postgresql', 'org.testcontainers', 'postgresql').versionRef('test-containers')
+            library('testcontainers.junit', 'org.testcontainers', 'junit-jupiter').versionRef('test-containers')
+            bundle('testcontainers', ['testcontainers.postgresql', 'testcontainers.junit'])
 
         }
     }
