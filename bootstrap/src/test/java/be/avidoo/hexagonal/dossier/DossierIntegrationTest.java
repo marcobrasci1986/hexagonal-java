@@ -9,6 +9,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * TODO Clean DB after Integration Tests
+ */
 public class DossierIntegrationTest extends AbstractIntegrationTest {
 
     @Test
